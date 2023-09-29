@@ -16,13 +16,13 @@ pipeline {
                   def fileContent = readFile(filePath).trim().split('\n')
 
                   // Define the index of the column you want to extract (0-based index)
-                  def columnIndex = 1  // Change this to the desired column index (e.g., 0 for the first column, 1 for the second column, etc.)
+                  def columnIndex = 0  // Change this to the desired column index (e.g., 0 for the first column, 1 for the second column, etc.)
                   echo "$columnIndex"
                   // Initialize a list to store the values from the specified column
                   def columnValues = []
 
                   // Loop through each line in the file
-                  fileContent.each { line ->
+                  for (String line : fileContent)
                         // Split the line into columns based on the comma separator
                         def columns = line.split(',')
                         
