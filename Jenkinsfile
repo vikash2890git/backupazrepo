@@ -22,7 +22,7 @@ pipeline {
                   def columnValues = []
 
                   // Loop through each line in the file
-                  for (String line : fileContent)
+                  for (String line : fileContent) {
                         // Split the line into columns based on the comma separator
                         def columns = line.split(',')
                         
@@ -31,7 +31,7 @@ pipeline {
                             // Extract the value from the specified column and add it to the list
                             columnValues.add(columns[columnIndex].trim())
                         }
-                    }
+                  }
 
                     // Print the values from the specified column
                     for (String value : columnValues) {
