@@ -30,8 +30,9 @@ pipeline {
                             echo "$vm_name"
                             echo "$recovery_vault"
                             echo "$recover_vault_group" 
-                            
-                         sh """az vm list --resource-group $vm_resource_group --output table"""      
+
+                         sh """az vm list --resource-group $vm_resource_group --output table""" 
+                         sh """az backup protection enable-for-vm --resource-group $recover_vault_group --vault-name $recovery_vault  --vm ${vm_id} --policy-name EnhancedPolicy"""     
                             // Check if the line has enough columns
                             
                       }
