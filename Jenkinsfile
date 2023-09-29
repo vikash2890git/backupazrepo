@@ -23,7 +23,7 @@ pipeline {
                             def columns = line.split(',')
                             def vm_id = line.split(',')[0]
                             def resource_group = line.split(',')[1]
-                            def vm_name = vm_id.split("/")[(vm_id.split("/").size()-1)].trim('"')
+                            def vm_name = vm_id.split("/")[(vm_id.split("/").size()-1)]
 
                             echo "$vm_id"
                             echo "$resource_group"
