@@ -21,21 +21,20 @@ pipeline {
                   def columnValues = []
 
                   // Loop through each line in the file
-                  for (String line : fileContent) {
-                  // Split the line into columns based on the comma separator
-                  def columns = line.split(',')
+                  fileContent.each { line ->
+                        // Split the line into columns based on the comma separator
+                        def columns = line.split(',')
+                        
+                        // Check if the line has enough columns
+                        if (columnIndex < columns.size()) {
+                            // Extract the value from the specified column and add it to the list
+                            columnValues.add(columns[columnIndex].trim())
+                        }
+                    }
 
-                  // Check if the line has enough columns
-                  if (columnIndex < columns.size()) {
-                    // Extract the value from the specified column and add it to the list
-                    columnValues.add(columns[columnIndex].trim())
-                  }
-                  }
-
-                  // Print the values from the specified column
-                  for (String value : columnValues) {
-                  println("Value from column $columnIndex: $value")
-                  }
+                    // Print the values from the specified column
+                    columnValues.each { value ->
+                        echo "Value from column $columnIndex: $value"
               }
             }
         }
