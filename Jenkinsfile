@@ -17,7 +17,7 @@ pipeline {
 
                   // Define the index of the column you want to extract (0-based index)
                   def columnIndex = 1  // Change this to the desired column index (e.g., 0 for the first column, 1 for the second column, etc.)
-                  echo $columnIndex
+                  echo "$columnIndex"
                   // Initialize a list to store the values from the specified column
                   def columnValues = []
 
