@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Check config') {
             steps {
+              script {
 
                   // Define the path to your CSV file
                   def filePath = 'config'
@@ -35,6 +36,7 @@ pipeline {
                   for (String value : columnValues) {
                   println("Value from column $columnIndex: $value")
                   }
+              }
             }
         }
     }
