@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Check config') {
             steps {
+              
               script {
 
                   // Define the path to your CSV file
@@ -36,7 +37,8 @@ pipeline {
                     columnValues.each { value ->
                         echo "Value from column $columnIndex: $value"
               }
-            }
+            } 
+          }
         }
     }
 }
