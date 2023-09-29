@@ -34,9 +34,9 @@ pipeline {
                     }
 
                     // Print the values from the specified column
-                    columnValues.each { value ->
-                        echo "Value from column $columnIndex: $value"
-              }
+                    for (String value : columnValues) {
+                      echo "Value from column $columnIndex: $value"
+                    }
             } 
           }
         }
