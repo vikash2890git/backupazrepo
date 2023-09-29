@@ -25,20 +25,16 @@ pipeline {
                   for (String line : fileContent) {
                         // Split the line into columns based on the comma separator
                         def columns = line.split(',')
-                        
-                        // Check if the line has enough columns
-                        if (columnIndex < columns.size()) {
-                            // Extract the value from the specified column and add it to the list
-                            columnValues.add(columns[columnIndex].trim())
-                        }
-                  }
+                        def vm_name = line.split(',')[0]
+                        def resource_group = line.split(',')[1]
 
-                    // Print the values from the specified column
-                    for (String value : columnValues) {
-                      echo "Value from column $columnIndex: $value"
-                    }
-            } 
-          }
+                        echo "$vm_name"
+                        echo "$resource_group"      
+                        // Check if the line has enough columns
+                        
+                  }
+              } 
+            }
         }
     }
 }
