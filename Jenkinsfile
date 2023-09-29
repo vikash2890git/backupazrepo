@@ -10,7 +10,7 @@ pipeline {
               script {
 
                   // Define the path to your CSV file
-                  def filePath = '/config'
+                  def filePath = 'config'
 
                   // Read the content of the file into a list of lines
                   def fileContent = readFile(filePath).trim().split('\n')
