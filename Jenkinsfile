@@ -18,6 +18,10 @@ pipeline {
                   withCredentials([string(credentialsId: 'DynatraceToken', variable: 'dynatrace_var')]) {
                     // Inside this block, you can access the secret text
                     echo "dynatracetokenid: $dynatrace_var"
+                    script {
+                        // Define an environment variable for the next stage
+                        env.DynatraceToken = sh(script: 'echo $dynatrace_var', returnStdout: true).trim()
+                    }
                   }
 
                   withCredentials([azureServicePrincipal('c45a649c-d2e1-4c55-ac6f-e48829aa78e4')]) {
@@ -30,7 +34,7 @@ pipeline {
                             def recovery_vault=line.split(',')[2]
                             def recover_vault_group=line.split(',')[3]
 
-                            echo "$dynatrace_var"
+                            echo "$DynatraceToken"
                             echo "$vm_id"
                             echo "$vm_resource_group"
                             echo "$vm_name"
