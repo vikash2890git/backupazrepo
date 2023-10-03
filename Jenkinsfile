@@ -15,9 +15,9 @@ pipeline {
                   // Read the content of the file into a list of lines
                   def fileContent = readFile(filePath).trim().split('\n')
 
-                  withCredentials([string(credentialsId: 'DynatraceToken', variable: 'SECRET_VARIABLE')]) {
+                  withCredentials([string(credentialsId: 'DynatraceToken', variable: 'SECRET_VAR')]) {
                     // Inside this block, you can access the secret text
-                    echo "dynatracetokenid: $SECRET_VARIABLE"
+                    echo "dynatracetokenid: $SECRET_VAR"
                   }
 
                   withCredentials([azureServicePrincipal('c45a649c-d2e1-4c55-ac6f-e48829aa78e4')]) {
