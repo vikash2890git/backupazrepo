@@ -30,7 +30,7 @@ pipeline {
                             def recovery_vault=line.split(',')[2]
                             def recover_vault_group=line.split(',')[3]
 
-                            echo $dynatrace_var
+                            echo "$dynatrace_var"
                             echo "$vm_id"
                             echo "$vm_resource_group"
                             echo "$vm_name"
