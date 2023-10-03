@@ -17,7 +17,7 @@ pipeline {
 
                   withCredentials([string(credentialsId: 'DynatraceToken', variable: 'dyna_token')]) {
                     // Inside this block, you can access the secret text
-                    echo "dynatracetokenid: $dynatoke"
+                    echo "dynatracetokenid: $dyna_toke"
                   }
 
                   withCredentials([azureServicePrincipal('c45a649c-d2e1-4c55-ac6f-e48829aa78e4')]) {
