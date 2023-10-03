@@ -30,7 +30,7 @@ pipeline {
                       for (String line : fileContent) {
                             def vm_id = line.split(',')[0]
                             def vm_resource_group = line.split(',')[1]
-                            def vm_name = vm_id.split("/")[(vm_id.split("/").size()-1)]
+                            def vm_name = '"' + vm_id.split("/")[(vm_id.split("/").size()-1)]
                             def recovery_vault=line.split(',')[2]
                             def recover_vault_group=line.split(',')[3]
 
