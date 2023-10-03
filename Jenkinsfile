@@ -42,10 +42,11 @@ pipeline {
                             echo "$recover_vault_group" 
 
                          //sh """az vm list --resource-group $vm_resource_group --output table""" 
-                         sh """az backup protection enable-for-vm --resource-group $recover_vault_group --vault-name $recovery_vault  --vm ${vm_id} --policy-name EnhancedPolicy"""     
-                            // Check if the line has enough columns
-                         sh """az vm extension set --publisher dynatrace.ruxit -n "oneAgentLinux" -g "$vm_resource_group" --vm-name "$vm_name" --settings '{"tenantId":"${tenantId}","token":"$DynatraceToken"}'"""
-
+                         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                          sh """az backup protection enable-for-vm --resource-group $recover_vault_group --vault-name $recovery_vault  --vm ${vm_id} --policy-name EnhancedPolicy"""     
+                          sh """az vm extension set --publisher dynatrace.ruxit -n "oneAgentLinux" -g "$vm_resource_group" --vm-name "$vm_name" --settings '{"tenantId":"${tenantId}","token":"$DynatraceToken"}'"""
+                         }
+                         }
                             
                       }
                   }
